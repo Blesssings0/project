@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: 37 99 235;
+  --color-primary-hover: 29 78 216;
+  --color-text: 17 24 39;
+  --color-text-secondary: 75 85 99;
+  --color-bg: 255 255 255;
+  --color-bg-secondary: 249 250 251;
+  --color-border: 229 231 235;
+  --transition-speed: 200ms;
+}
+
+.dark {
+  --color-primary: 59 130 246;
+  --color-primary-hover: 96 165 250;
+  --color-text: 243 244 246;
+  --color-text-secondary: 209 213 219;
+  --color-bg: 17 24 39;
+  --color-bg-secondary: 31 41 55;
+  --color-border: 55 65 81;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+    line-height: 1.2;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+
+  button, a {
+    @apply transition-colors duration-200;
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-gray-900;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
